@@ -1,0 +1,57 @@
+#Namespace Section
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-resume
+
+---
+#Service Section
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: my-resume
+  name: my-resume-svc
+  labels:
+    app: my-resume-app
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30001
+      protocol: TCP
+  selector:
+    app: my-resume-app   
+---
+#Deployment Section
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: my-resume
+  name: my-resume-deployment
+  labels:
+    app: my-resume-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: my-resume-app
+  template:
+    metadata:
+      namespace: my-resume
+      labels:
+        app: my-resume-app
+    spec:
+      containers:
+      - name: my-resume-pod
+        image: ranjeethmd/my-resume:v2
+        env:
+        - name: my-resume-connection
+          valueFrom:
+            secretKeyRef:
+              name: my-resume-secret               
+              key: mongo-connection        
+        ports:
+        - containerPort: 8080
