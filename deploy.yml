@@ -6,24 +6,6 @@ metadata:
   name: my-resume
 
 ---
-#Service Section
-
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: my-resume
-  name: my-resume-svc
-  labels:
-    app: my-resume-app
-spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      nodePort: 30001
-      protocol: TCP
-  selector:
-    app: my-resume-app   
----
 #Deployment Section
 
 apiVersion: apps/v1
@@ -46,7 +28,7 @@ spec:
     spec:
       containers:
       - name: my-resume-pod
-        image: ranjeethmd/my-resume:v2
+        image: ranjeethmd/my-resume:v1
         env:
         - name: my-resume-connection
           valueFrom:
@@ -55,3 +37,21 @@ spec:
               key: mongo-connection        
         ports:
         - containerPort: 8080
+---
+#Service Section
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: my-resume
+  name: my-resume-svc
+  labels:
+    app: my-resume-app
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30001
+      protocol: TCP
+  selector:
+    app: my-resume-app   
