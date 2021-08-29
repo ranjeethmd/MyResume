@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { Jobs } from './components/Jobs';
 import { JobDescription } from './components/JobDesc';
 import { Skills } from './components/Skills';
 import { Title } from './components/Title';
-import { useEvents } from './components/EventSystem';
 import { parseUri } from './components/ParseUrl';
 import { Error } from './components/Error';
 import { Content } from './components/Content';
@@ -17,23 +16,13 @@ export const App = () => {
 
     const history = useHistory();
 
-    const [event, setEvent] = useState();
-
     const defaultUri = parseUri(location.pathname, '/job-desc/:company');
 
-    const [subscribe] = useEvents();
+    const [error, setError] = useState({});
 
-    useEffect(() => {
-
-        const unsubscribe = subscribe((event, message) => {
-
-            setEvent({ event, message });
-        });
-
-        return unsubscribe;
-
-    }, []);
-
+    const onError = (code, message) => {
+        setError({ code, message });
+    }
 
     const onCompanyChange = (company, unClicked) => {
         if (unClicked) {
@@ -46,26 +35,22 @@ export const App = () => {
     };
 
     const onReturnHome = () => {
-        console.log('home');
+        setError({});
         history.push(`/`);
-        setEvent(undefined);
     }
 
     return (
         <>
             <Title />
-            <section className={event ? '' : 'hide'}>
-                <Error code={(event || {}).event} message={(event || {}).message} onClick={onReturnHome} />
-            </section>
-            <section className={event ? 'hide' : ''}>
+            <Error {...error} onClick={onReturnHome}>
                 <Jobs onClick={onCompanyChange} defaulCompany={(defaultUri || {}).company} />
-            </section>
-            <Content hidden={event ? true : false}>
-                <Switch>
-                    <Route path='/job-desc/:company' component={JobDescription} />
-                    <Route path='/' component={Skills} />
-                </Switch>
-            </Content>
+                <Content>                    
+                    <Switch>
+                        <Route path='/job-desc/:company' render={props => <JobDescription {...props} onError={onError} />} />
+                        <Route path='/' render={props => <Skills {...props} onError={onError} />} />
+                    </Switch>
+                </Content>
+            </Error>
         </>
     );
 }

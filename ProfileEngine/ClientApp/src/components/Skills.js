@@ -1,17 +1,15 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Loader } from './Loader';
-import { useEvents } from './EventSystem';
 
-export const Skills = () => {
+export const Skills = ({ onError }) => {
 
 
     const [skills, setSkills] = useState([]);
-    const [loader, setLoader] = useState(false);
-    const [_,publish] = useEvents();
+    const [loader, setLoader] = useState(false);  
 
     useEffect(() => {
         getSkills();
+        return () => { setLoader(false)}
 
     }, []);
 
@@ -20,19 +18,20 @@ export const Skills = () => {
         setLoader(true);
         try {
             const response = await fetch(`Skills`);
+            const data = await response.json();
 
-            if (response.status > 199 && response.status < 300) {
-                const data = await response.json();
+            if (response.status > 199 && response.status < 300) {               
                 setSkills(data);
+                setLoader(false);
             }
-            else {
-                publish(response.status, "You naughty naughty !!!");
+            else {               
+                setLoader(false);
+                onError(response.status, data.message);
             }
         }
         catch (error) {
             console.log(error);
-        }
-        setLoader(false);
+        }        
     }
     
 

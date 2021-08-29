@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
+using ProfileEngine.Data.Interface;
+using System.Threading.Tasks;
 
 namespace ProfileEngine.Controllers
 {
@@ -8,10 +8,14 @@ namespace ProfileEngine.Controllers
     [ApiController]
     public class SkillsController : Controller
     {
-        private string[] skills = { "C#", "JS", "SQL Server", "MongoDB", "Powershell", "CSS", "Java", "JMS", "Kafka", "NodeJS", "OOP", "Architecture", "Design", "Angular", "React", ".NET Core", "Cordova", "Kubernetes", "Docker", "Istio" };
-        public IActionResult Get()
+        private readonly IRepository _repository;
+        public SkillsController(IRepository repository)
         {
-            return Ok(skills);
+            _repository = repository;
+        }
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _repository.GetSkillsAsync());
         }
     }
 }

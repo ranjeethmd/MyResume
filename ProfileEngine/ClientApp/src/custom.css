@@ -98,20 +98,20 @@ button {
 
 .surface-normal {
     background: #efeeee;
-    box-shadow: 7px 7px 14px #acacac, -7px -7px 14px #ffffff;
-    border: 1px #fff solid;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.3), -7px -7px 16px #ffffff;
+    border: 1px #efefef solid;
 }
 
 .surface-proj {
     background: linear-gradient(145deg, #ffffff, #d7d6d6);
-    box-shadow: 5px 5px 10px #bfbebe, -5px -5px 10px #ffffff;
-    border: 1px rgba(255,255,255,1) solid;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.3), -8px -8px 16px #ffffff;
+    border: 1px #efefef solid;
 }
 
 .surface-inset {
     background: #efeeee;
     box-shadow: inset 4px 4px 4px rgba(0,0,0,0.2), inset -4px -4px 4px #ffffff;
-    border: 1px rgba(255,255,255,1) solid;
+    border: 1px #efefef solid;
 }
 
 .block {
@@ -195,8 +195,8 @@ li {
     height: 3rem !important;
     margin: 1rem auto;
     padding: 0 !important;
-    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.2), inset -4px -4px 4px rgba(255,255,255,1), 4px 4px 4px rgba(0,0,0,0.2), -4px -4px 4px rgba(255,255,255,1);
-    border: 6px solid #efeeee;
+    box-shadow: inset 4px 4px 8px rgba(0,0,0,0.2), inset -4px -4px 8px rgba(255,255,255,1), 8px 8px 16px rgba(0,0,0,0.2), -8px -8px 16px rgba(255,255,255,1);
+    border: 3px solid #efeeee;
 }
 
     .job-wrapper > button {
@@ -352,13 +352,15 @@ p {
 .path::before {
     content: "";
     position: absolute;
-    height: 0.5rem;
+    height: 0.25rem;
     left: 0;
     right: 0;
     top: 50%;
     border-radius: .25rem;
     border: 1px #f1f1f1 solid;
-    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.2), inset -4px -4px 4px rgba(255,255,255,0.5);
+    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.1), inset -4px -4px 4px rgba(255,255,255,0.5);
+    
+
 }
 
 .loader {
@@ -497,7 +499,7 @@ p {
 
     .error-hand h1 {
         font-weight: 500;
-        color: rgba(234,29,29,0.75);
+        color: rgba(234,29,29,0.9);
         font-size: 2.5rem;
     }
 
@@ -523,18 +525,24 @@ p {
 
 .error-msg {
     padding: .5rem 1rem;
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.3),inset -4px -4px 4px rgba(255, 255, 255,1);
-    border: 4px #efeeee solid;
-    border-radius: 12px;
-    font-weight: 500;
-    display: inline-block;
+    box-shadow: inset 8px 8px 8px rgba(0, 0, 0, 0.3),inset -8px -8px 8px rgba(255, 255, 255,1),8px 8px 16px rgba(0,0,0,0.3), -8px -8px 16px #ffffff;
+    border: 4px #efefef solid;
+    border-radius: 2rem;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: rgba(255,0,0,0.9);
-    font-style: italic;
+    text-align: center;
+    width: 50%;
+    margin: 2rem auto;
+}
+
+.home > button{
+    width:3rem!important;
+    height:3rem!important;
+    font-size:1.2rem !important;  
 }
 
 .home > button > i {
-    color: #31b200
+    color: #209401;
 }
 
 .relative {

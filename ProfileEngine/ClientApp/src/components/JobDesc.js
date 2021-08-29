@@ -1,13 +1,11 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from './Loader';
-import { useEvents } from './EventSystem';
 
-export const JobDescription = () => {
+
+export const JobDescription = ({ onError }) => {
 
     const { company } = useParams();
-
-    const [, publish] = useEvents();
 
     const [descriptions, setDescription] = useState([]);
 
@@ -16,7 +14,7 @@ export const JobDescription = () => {
     useEffect(() => { 
         updateDescription();
     }, [company]);
-
+   
 
     useEffect(() => {
         return () => { setLoading(false); }
@@ -31,18 +29,22 @@ export const JobDescription = () => {
             try {
                 const response = await fetch(`Roles/${company}`);
 
+                console.log(response.status);
+                const data = await response.json();
+
                 if (response.status > 199 && response.status < 300) {
-                    const data = await response.json();
-                    setDescription(data);                    
+                    
+                    setDescription(data);
+                    setLoading(false);
                 }
-                else {
-                    publish(response.status, "You naughty naughty !!!");
+                else  {
+                    setLoading(false);
+                    onError(response.status, data.message);
                 }
             }
             catch (error) {                
                 console.log(error);
-            }
-            setLoading(false);
+            }            
         }
     }
 

@@ -8,15 +8,14 @@ export const Content = ({ hidden, children }) => {
 
     const updateContentLayout = () => {
 
-        const element = content.current;
+        if (!content.current)
+            return;
 
-        const defaultHeight = window.innerHeight * 0.2;
+        const element = content.current;        
 
         const calucluated = window.innerHeight - element.offsetTop;
 
-        var contentHeight = Math.max(defaultHeight, calucluated);
-
-        setContentHeight(contentHeight);
+        setContentHeight(calucluated);
     }
 
     useEffect(() => {
