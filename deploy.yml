@@ -50,7 +50,7 @@ spec:
         resources:
           limits:
             memory: "287Mi"
-            cpu: "10m"
+            cpu: "20"
 ---
 #Service Section
 
