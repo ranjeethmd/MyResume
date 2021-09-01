@@ -30,6 +30,10 @@ spec:
       - name: my-resume-pod
         image: ranjeethmd/my-resume:v1
         env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Development"
+        - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
+          value: "true"
         - name: my-resume-connection
           valueFrom:
             secretKeyRef:
@@ -51,7 +55,7 @@ spec:
   type: NodePort
   ports:
     - port: 8080
-      nodePort: 30001
+      nodePort: 30005
       protocol: TCP
   selector:
     app: my-resume-app   

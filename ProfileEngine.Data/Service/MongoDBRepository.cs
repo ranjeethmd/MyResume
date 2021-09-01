@@ -1,12 +1,9 @@
 ﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 using ProfileEngine.Data.Interface;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProfileEngine.Data.Service
@@ -16,9 +13,9 @@ namespace ProfileEngine.Data.Service
         static MongoDBRepository()
         {
             var camelCaseConvention = new ConventionPack { new CamelCaseElementNameConvention() };
-            ConventionRegistry.Register("CamelCase",camelCaseConvention,type => true);
+            ConventionRegistry.Register("CamelCase", camelCaseConvention, type => true);
         }
-         
+
         private readonly IMongoDatabase _database;
         public MongoDBRepository(IMongoDb db)
         {
@@ -33,8 +30,8 @@ namespace ProfileEngine.Data.Service
             var sort = BsonDocument.Parse("{_id:-1}");
 
 
-            var document =  await skills.Find(new BsonDocument()).Project(projection).Sort(sort).Limit(1).FirstAsync();
-            var skill =  document.GetValue("skills").AsBsonArray; 
+            var document = await skills.Find(new BsonDocument()).Project(projection).Sort(sort).Limit(1).FirstAsync();
+            var skill = document.GetValue("skills").AsBsonArray;
             return skill.Select(v => v.AsString);
         }
 

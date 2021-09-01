@@ -11,6 +11,6 @@ namespace ProfileEngine.POCO
             Message = message;
         }
         public Guid Id { get; }
-        public string Message { get;  }
+        public string Message { get; }
     }
 }
