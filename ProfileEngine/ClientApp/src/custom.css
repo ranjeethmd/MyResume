@@ -40,30 +40,43 @@ button {
     cursor: pointer;
 }
 
+ .banner{
+    height: 75%;
+    background-color: #0093E9;
+    background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    left:0;
+}
+
+ .row-50{
+     height: 50vh !important;
+     position:relative;
+ }
+.row-20 {
+    height: 20vh !important;
+    position: relative;
+}
+
+ 
+
 .title {
     position: relative;
     text-align: center;
     color: #fff;
 }
 
-    .title .banner {
-        height: 12rem;
-        background-color: #0093E9;
-        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-        position: absolute;
-        width: 100%;
-        top: 0;
-    }
+  
 
     .title .img {
         border-radius: 50%;
         position: relative;
-        width: 10rem;
-        height: 10rem;
+        width: 15vh;
+        height: 15vh;
         background: rgb(255,255,255);
-        padding: 0.5rem;
+        padding: 5px;
         margin: 0 auto;
-        margin-top: 1rem;
     }
 
         .title .img::before {
@@ -85,14 +98,13 @@ button {
             height: 100%;
         }
 
-    .title h1 {
+    .title h2 {
         position: relative;
         padding-top: 1rem;
         color: #fff;
     }
 
-    .title h3 {
-        padding-top: 0.5rem;
+    .title span {        
         color: #fff;
     }
 
@@ -167,6 +179,14 @@ button {
     font-size: 0.9rem;
 }
 
+a {
+    display: inline-block;
+    line-height: 3rem;
+    font-size: 1.5rem !important;
+    height: 3rem !important;
+    width: 3rem !important;
+}
+
 .repo {
     padding-top: 1rem;
     display: inline-block !important;
@@ -176,9 +196,13 @@ button {
 }
 
 
-    .repo > button {
-        margin-left: 2rem;
+    .repo > a:nth-child(even) {
+        margin-left: 0 2rem;
     }
+
+ul{
+    margin:1rem;
+}
 
 li {
     display: inline-block !important;
@@ -186,18 +210,22 @@ li {
 
 
     li:nth-child(even) {
-        margin: 1rem 2rem !important;
+        margin: 0 1rem !important;
     }
 
 
 .job-wrapper {
     width: 3rem !important;
     height: 3rem !important;
-    margin: 1rem auto;
+    margin: 1rem 25% !important;
     padding: 0 !important;
     box-shadow: inset 4px 4px 8px rgba(0,0,0,0.2), inset -4px -4px 8px rgba(255,255,255,1), 8px 8px 16px rgba(0,0,0,0.2), -8px -8px 16px rgba(255,255,255,1);
     border: 3px solid #efeeee;
 }
+
+
+    
+
 
     .job-wrapper > button {
         margin: auto !important;
@@ -227,6 +255,31 @@ li {
     font-weight: 500;
     border-radius: 5px;
 }
+
+
+.exp ul{
+    margin:1rem 0 !important;
+}
+
+.exp li:nth-child(even) {
+    margin: 0 !important;    
+}
+
+.exp li:nth-child(even) {
+    margin: 0 1rem !important;   
+}
+
+    .exp li:nth-child(even):before {
+        content: "";
+        position: absolute;
+        height: 0.25rem;
+        top: 50%;
+        left: -2rem;
+        width:10rem;
+        border-radius: .25rem;
+        border: 1px #f1f1f1 solid;
+        box-shadow: inset 4px 4px 4px rgba(0,0,0,0.1), inset -4px -4px 4px rgba(255,255,255,0.5);
+    }
 
 .exp button > span {
     width: 1rem;
@@ -259,7 +312,7 @@ li {
 }
 
 
-    .exp button:hover span, .exp .btn-clicked span {
+    .exp .btn-clicked span {
         background: rgba(0,26,255,0.6);
         box-shadow: inset 2px 2px 2px rgba(0,26,255,1), inset -2px -2px 2px rgba(0,26,255,0.1);
         border: 1px #fff solid !important;
@@ -275,31 +328,23 @@ footer {
     margin-top: 2rem;
 }
 
-    footer * {
-        color: white;
-        color: #9b9b9b;
-    }
-
-
-
-
-
+footer  span {
+    font-size:0.75rem;
+    padding:1rem;
+    font-weight:600;
+}
 
 .exp p {
     margin: 0 auto !important;
 }
 
-button:hover {
-    background: linear-gradient(145deg, #d7d6d6, #ffffff);
-    box-shadow: 9px 9px 18px #cbcaca, -9px -9px 18px #ffffff;
-    border: 1px rgba(255,255,255,1) solid;
-}
 
-    button:hover.square-large, button:active.square-large, .square-large .btn-clicked {
+
+    button:active.square-large, .square-large .btn-clicked {
         font-size: 1.9rem !important;
     }
 
-    button:hover.square-normal, button:active.square-normal, .square-normal.btn-clicked {
+    button:active.square-normal, .square-normal.btn-clicked {
         font-size: 0.9rem !important;
     }
 
@@ -315,10 +360,19 @@ button:active, .btn-clicked {
     display: inline-block !important;
 }
 
-.content {
-    overflow-y: scroll;
+.content-y {
+    overflow-y: auto;
     overflow-x: hidden;
-    max-width: 50%;
+    width: 90vw;
+    margin: 0 auto;
+    height:100%;
+}
+
+.content-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    white-space: nowrap;
     margin: 0 auto;
 }
 
@@ -330,16 +384,18 @@ p {
 
 
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #efeeee;
+    -webkit-box-shadow: none !important;
+    background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0;
-    border: 6px solid #efeeee;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
     background-clip: content-box;
 }
 
@@ -349,19 +405,6 @@ p {
     }
 
 
-.path::before {
-    content: "";
-    position: absolute;
-    height: 0.25rem;
-    left: 0;
-    right: 0;
-    top: 50%;
-    border-radius: .25rem;
-    border: 1px #f1f1f1 solid;
-    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.1), inset -4px -4px 4px rgba(255,255,255,0.5);
-    
-
-}
 
 .loader {
     width: 8rem;
@@ -548,3 +591,4 @@ p {
 .relative {
     position: relative !important;
 }
+

@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-resume-ingress
+  namespace: my-resume
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"   
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/issuer: "letsencrypt-prod"    
+spec:
+  tls:
+  - hosts:
+    - www.ranjeeth.info
+    - md.ranjeeth.info
+    secretName: my-resume-cert-tls-prod
+  rules:
+    - host: "www.ranjeeth.info"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: my-resume-svc
+                port: 
+                  number: 80
+    - host: "md.ranjeeth.info"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: my-resume-svc
+                port: 
+                  number: 80
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+  namespace: my-resume
+spec:
+  acme:
+    # Staging API
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email:  ranjeeth.devaiah@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+       ingress:
+         class: nginx

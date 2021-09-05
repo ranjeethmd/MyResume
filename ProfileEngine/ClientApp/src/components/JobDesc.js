@@ -63,7 +63,7 @@ export const JobDescription = ({ onError }) => {
                 {descriptions.map(({ title, description }) => <div key={title} className="skills margin-b-2-l">
                     <h2 className="surface surface-inset pad-eql">{title}</h2>
                     <p className="surface surface-inset eql-margin-tb pad-eql">
-                        {description}
+                        {description.split('\n').filter(line => line).map((line, index) => <React.Fragment key={ index}><i className="fas fa-square"></i>&nbsp;&nbsp;{line}<br /></React.Fragment>)}
                     </p>
                 </div>)}
             </div>

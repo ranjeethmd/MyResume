@@ -74,14 +74,16 @@ export const Jobs = ({ onClick, defaulCompany, onError }) => {
     else {
 
         return (
-            <div className="exp align-center eql-margin-lr">
-                
-                <ul className ="path">
+            <>
+           
+                <div className="exp align-center">                   
+                <ul>
                     {exps.map(({ company, start, end, display }, index) => (index % 2 === 0) ?
                         <li key={company}><span className="company block">{display}</span><div className="job-wrapper surface square-large surface-inset round block"><button className={(name === company) ? "surface square-normal surface-proj round btn-clicked" : "surface surface-proj square-normal round"} onClick={() => onClickHandler(company)}><span className="surface-inset block"></span></button></div><span className="years block">{`${start} - ${end}`}</span></li>
                         : <li key={company}><span className="years block">{`${start} - ${end}`}</span><div className="job-wrapper surface square-large surface-inset round block"><button className={(name === company) ? "surface square-normal surface-proj round btn-clicked" : "surface surface-proj square-normal round"} onClick={() => onClickHandler(company)}><span className="surface-inset block"></span></button></div><span className="company block">{display}</span></li>)
                     }                    
                 </ul>                
-            </div>);
+                </div>
+                </>);
     }
 }

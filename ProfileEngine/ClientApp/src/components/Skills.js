@@ -6,12 +6,7 @@ export const Skills = ({ onError }) => {
 
     const [skills, setSkills] = useState([]);
     const [loader, setLoader] = useState(false);  
-
-    useEffect(() => {
-        getSkills();
-        return () => { setLoader(false)}
-
-    }, []);
+    
 
 
     const getSkills = async () => {
@@ -33,6 +28,12 @@ export const Skills = ({ onError }) => {
             console.log(error);
         }        
     }
+
+    useEffect(() => {
+        getSkills();
+        return () => { setLoader(false) }
+
+    }, []);
     
 
     if (loader) {

@@ -1,29 +1,10 @@
-﻿import React, { useRef, useEffect, useState } from 'react';
+﻿import React from 'react';
 
-export const Content = ({ hidden, children }) => {
+export const Content = ({ hidden, children, scrollX }) => {
 
-    const content = useRef(null);
-
-    const [contentHeight, setContentHeight] = useState(0);
-
-    const updateContentLayout = () => {
-
-        if (!content.current)
-            return;
-
-        const element = content.current;        
-
-        const calucluated = window.innerHeight - element.offsetTop;
-
-        setContentHeight(calucluated);
-    }
-
-    useEffect(() => {
-        setTimeout(updateContentLayout,500)        
-    }, [hidden]);
-
+   
     return (
-        <div ref={content} className={hidden ? 'hide' : "content"} style={{ 'height': `${contentHeight}px` }}>
+        <div className={hidden ? 'hide' : scrollX ? "content-x":"content-y"}>
             {children}
         </div>
     );
