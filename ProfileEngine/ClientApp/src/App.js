@@ -44,7 +44,7 @@ export const App = () => {
             <div className="row-25">
                 <Title />
             </div>
-            <div className="row-25">                
+            <div className="row-25">
                 <ul>
                     <li>
                         <a className="surface-normal square-large circular" href="https://github.com/ranjeethmd"><i className="fab fa-github-alt"></i></a>
@@ -63,9 +63,11 @@ export const App = () => {
             <div className="row-50">
                 <Content>
                     <Error {...error} onClick={onReturnHome}>
-                        <Content scrollX={true}>
-                            <Jobs onClick={onCompanyChange} defaulCompany={(defaultUri || {}).company} />
-                        </Content>
+                        <div className="exp-wrapper">
+                            <Content scrollX={true}>
+                                <Jobs onClick={onCompanyChange} defaulCompany={(defaultUri || {}).company} />
+                            </Content>
+                        </div>
                         <Switch>
                             <Route path='/job-desc/:company' render={props => <JobDescription {...props} onError={onError} />} />
                             <Route path='/' render={props => <Skills {...props} onError={onError} />} />
@@ -74,11 +76,11 @@ export const App = () => {
                     <footer>
                         <div>
                             <h4>Powered by</h4>
-                            <br/>
+                            <br />
                             <span>C#</span>
                             <span>ReactJS</span>
                             <span>Docker</span>
-                            <br/>
+                            <br />
                             <span>kubernetes</span>
                             <span>MongoDB</span>
                             <span>Azure</span>

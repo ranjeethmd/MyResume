@@ -241,7 +241,9 @@ li {
         width: 2rem !important;
     }
 
-
+.skills i {
+    color: #4158D0;
+}
 
 .company, .years {
     font-size: 0.8rem;
@@ -250,8 +252,8 @@ li {
 }
 
 .company {
-    background-color: rgba(0,26,255,0.7);
-    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.3), inset -4px -4px 4px rgba(155,255,255,0.3);
+    background-color: #0093E9;
+    box-shadow: inset 4px 4px 4px rgba(0,0,0,0.3), inset -4px -4px 4px rgba(255,255,255,0.3);
     color: #fff;
     font-weight: 500;
     border-radius: 5px;
@@ -375,6 +377,7 @@ button:active, .btn-clicked {
     width: 100%;
     white-space: nowrap;
     margin: 0 auto;
+    height:11rem;
 }
 
 
@@ -593,3 +596,7 @@ p {
     position: relative !important;
 }
 
+.exp-wrapper{
+    height:10rem;
+    overflow:hidden;
+}
