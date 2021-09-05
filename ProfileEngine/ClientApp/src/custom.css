@@ -38,6 +38,7 @@ body {
 
 button {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
  .banner{
