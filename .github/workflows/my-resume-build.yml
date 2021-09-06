@@ -58,7 +58,7 @@ jobs:
         tags: ranjeethmd/my-resume:v6
   azure:   
     runs-on: ubuntu-latest
-    #needs: docker
+    needs: docker
     steps:
       - uses: actions/checkout@v2
 
@@ -70,9 +70,5 @@ jobs:
       - uses: azure/k8s-deploy@v1
         with:
           manifests: |
-            deploy-az.yml
-          #images: |
-          #  ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-          #imagepullsecrets: |
-            #${{ env.SECRET }}
+            deploy-az.yml          
           namespace: 'my-resume'
