@@ -75,5 +75,5 @@ jobs:
           manifests: |
             deploy-az.yml
           images: |
-            "ranjeethmd/my-resume:v${{ github.run_number }}"          
+            "registry.hub.docker.com/ranjeethmd/my-resume:v${{ github.run_number }}"          
           namespace: 'my-resume'
