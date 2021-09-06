@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       env:
-        MY_RESUME_CONNECTION: '${{ secrets.MY_RESUME_CONNECTION }}'
+        MY_RESUME_CONNECTION: 'TEST'
   docker:
     runs-on: ubuntu-latest
     # Wait for test cases to complete before building and pushing the container image
