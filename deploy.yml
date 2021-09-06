@@ -43,7 +43,7 @@ spec:
         - name: my-resume-connection
           valueFrom:
             secretKeyRef:
-              name: my-resume-secret               
+              name: my-resume-secret           
               key: mongo-connection        
         ports:
         - containerPort: 8080
