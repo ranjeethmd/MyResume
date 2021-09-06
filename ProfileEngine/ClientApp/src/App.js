@@ -5,6 +5,7 @@ import { Jobs } from './components/Jobs';
 import { JobDescription } from './components/JobDesc';
 import { Skills } from './components/Skills';
 import { Title } from './components/Title';
+import { Links } from './components/Links';
 import { parseUri } from './components/ParseUrl';
 import { Error } from './components/Error';
 import { Content } from './components/Content';
@@ -45,20 +46,7 @@ export const App = () => {
                 <Title />
             </div>
             <div className="row-25">
-                <ul>
-                    <li>
-                        <a className="surface-normal square-large circular" href="https://github.com/ranjeethmd"><i className="fab fa-github-alt"></i></a>
-                    </li>
-                    <li>
-                        <a className="surface-normal square-large circular" href="https://www.linkedin.com/in/ranjeethdevaiah/"><i className="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li>
-                        <a className="surface-normal square-large circular" href="https://hub.docker.com/repository/docker/ranjeethmd/open-image"><i className="fab fa-docker"></i></a>
-                    </li>
-                    <li>
-                        <a className="surface-normal square-large circular" href="https://bitbucket.org/RanjeethDevaiah/"><i className="fab fa-bitbucket"></i></a>
-                    </li>
-                </ul>
+                <Links />
             </div>
             <div className="row-50">
                 <Content>
@@ -75,8 +63,7 @@ export const App = () => {
                     </Error>
                     <footer>
                         <div>
-                            <h4>Powered by</h4>
-                            <br />
+                            <h4>Powered by</h4>                           
                             <span>C#</span>
                             <span>ReactJS</span>
                             <span>Docker</span>

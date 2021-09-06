@@ -59,5 +59,17 @@ namespace ProfileEngine.Data.Service
 
             return document;
         }
+
+        public async Task<IEnumerable<Link>> GetLinksAsync()
+        {
+            var jobs = _database.GetCollection<Link>("ExternalUrls");
+
+            var projection = BsonDocument.Parse("{_id:0}");
+            var sort = BsonDocument.Parse("{_id:1}");
+
+            var document = await jobs.Find(new BsonDocument()).Project<Link>(projection).Sort(sort).ToListAsync();
+
+            return document;
+        }
     }
 }

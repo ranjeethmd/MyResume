@@ -9,7 +9,6 @@ using ProfileEngine.Data.Interface;
 using ProfileEngine.Data.Service;
 using ProfileEngine.Handlers;
 using ProfileEngine.Services;
-using NWebsec;
 using System;
 
 namespace ProfileEngine
@@ -59,7 +58,7 @@ namespace ProfileEngine
             //Registered before static files to always set header
             app.UseXContentTypeOptions();
             app.UseReferrerPolicy(opts => opts.NoReferrer());
-           
+
 
             //Registered after static files, to set headers for dynamic content.
             app.UseXfo(xfo => xfo.Deny());
@@ -73,7 +72,7 @@ namespace ProfileEngine
                 logger.LogInformation("Enabled Hsts");
                 app.UseHsts();
             }
-            
+
 
 
             app.UseHttpsRedirection();

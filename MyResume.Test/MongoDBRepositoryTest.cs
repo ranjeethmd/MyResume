@@ -50,5 +50,16 @@ namespace MyResume.Test
 
             Assert.Empty(result);
         }
+
+        [Fact]
+        public async Task CanGetLinks()
+        {
+            var connection = new Connections();
+            var respository = new MongoDBRepository(connection);
+
+            var result = await respository.GetLinksAsync();
+
+            Assert.NotEmpty(result);
+        }
     }
 }

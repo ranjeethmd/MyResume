@@ -16,13 +16,14 @@ namespace ProfileEngine
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.ConfigureKestrel(options => options.AddServerHeader = false)
-                    .UseStartup<Startup>();                    
-                    
+                    .UseStartup<Startup>();
+
                 })
-            .ConfigureAppConfiguration(builder => {
+            .ConfigureAppConfiguration(builder =>
+            {
 
                 builder.AddEnvironmentVariables();
-            
+
             });
     }
 }
