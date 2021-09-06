@@ -32,8 +32,9 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-  build:
-    runs-on: ubuntu-latest    
+  test:
+    runs-on: ubuntu-latest 
+    needs: analyze    
     strategy:
       matrix:
         dotnet-version: [5.0.x]
