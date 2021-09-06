@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: my-resume-pod
-        image: ranjeethmd/my-resume:v5
+        image: ranjeethmd/my-resume:v6
         imagePullPolicy: Always
         env:
         - name: "ASPNETCORE_ENVIRONMENT"

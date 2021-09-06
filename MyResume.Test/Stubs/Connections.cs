@@ -5,6 +5,6 @@ namespace MyResume.Test.Stubs
 {
     class Connections : IMongoDb
     {
-        public string ConnectionString => Environment.ExpandEnvironmentVariables("%my-resume-connection%");
+        public string ConnectionString => Environment.ExpandEnvironmentVariables("%MY_RESUME_CONNECTION%");
     }
 }
