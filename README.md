@@ -9,9 +9,10 @@ Below are the list of taks accomplished by this repsoitory
 - [x] Build K8s deployment manifest for azure deployment.
 - [x] Create static IP in azure.
 - [x] Create domain name using GoDaddy.com and redirect it to static ip.
-- [x] Build K8s manifest to deploy nginx ingress controller to support https connection to external systems.
+- [x] Build K8s manifest to deploy nginx ingress controller to support https connection.
 - [x] Build K8s mainfests to install CertManager, Issuer and Ingress to support and automate Letsencrypt SSL certificates.      
 - [x] Build CI\CD pipeline using git actions to build .net core application with test, build and push docker containers. K8s deployment of the resources to azure on push and pull
+- [x] Added code scan to CI\CD pipeline.
 
 
 ## docker hub push pull run Command
