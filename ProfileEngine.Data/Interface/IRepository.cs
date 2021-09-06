@@ -8,5 +8,6 @@ namespace ProfileEngine.Data.Interface
         Task<IEnumerable<string>> GetSkillsAsync();
         Task<IEnumerable<Experience>> GetJobsAsync();
         Task<IEnumerable<Role>> GetRolesAsync(string companyId);
+        Task<IEnumerable<Link>> GetLinksAsync();
     }
 }

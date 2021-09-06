@@ -15,17 +15,16 @@ export const Skills = ({ onError }) => {
             const response = await fetch(`Skills`);
             const data = await response.json();
 
-            if (response.status > 199 && response.status < 300) {               
+            if (response.status > 199 && response.status < 300) {
                 setSkills(data);
                 setLoader(false);
             }
-            else {               
+            else {
                 setLoader(false);
                 onError(response.status, data.message);
             }
         }
-        catch (error) {
-            console.log(error);
+        catch {
         }        
     }
 

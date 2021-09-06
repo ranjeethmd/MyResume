@@ -33,17 +33,17 @@ export const JobDescription = ({ onError }) => {
                 const data = await response.json();
 
                 if (response.status > 199 && response.status < 300) {
-                    
+
                     setDescription(data);
                     setLoading(false);
                 }
-                else  {
+                else {
                     setLoading(false);
                     onError(response.status, data.message);
                 }
             }
-            catch (error) {                
-                console.log(error);
+            catch {
+               
             }            
         }
     }

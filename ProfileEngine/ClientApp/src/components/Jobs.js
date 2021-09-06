@@ -36,7 +36,7 @@ export const Jobs = ({ onClick, defaulCompany, onError }) => {
             const response = await fetch(`Experience`);
             const data = await response.json();
 
-            if (response.status > 199 && response.status < 300) {                
+            if (response.status > 199 && response.status < 300) {
                 setExps(data);
                 setLoading(false);
             }
@@ -45,8 +45,7 @@ export const Jobs = ({ onClick, defaulCompany, onError }) => {
                 onError(response.status, data.message);
             }
         }
-        catch (error) {
-            console.log(error);
+        catch {
         }
     }
 
