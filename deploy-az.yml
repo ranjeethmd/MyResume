@@ -41,7 +41,7 @@ spec:
           value: "Production"
         - name: "ASPNETCORE_FORWARDEDHEADERS_ENABLED"
           value: "true"
-        - name: my-resume-connection
+        - name: MY_RESUME_CONNECTION
           valueFrom:
             secretKeyRef:
               name: my-resume-secret               
