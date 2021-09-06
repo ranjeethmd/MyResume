@@ -60,7 +60,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     # Wait for test cases to complete before building and pushing the container image
-    needs: build 
+    needs: test 
     steps:
     - uses: actions/checkout@v2
 
