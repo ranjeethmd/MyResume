@@ -11,16 +11,16 @@ export const JobDescription = ({ onError }) => {
 
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => { 
+    useEffect(() => {
         updateDescription();
     }, [company]);
-   
+
 
     useEffect(() => {
         return () => { setLoading(false); }
-    }, []);    
+    }, []);
 
-    
+
 
     const updateDescription = async () => {
 
@@ -43,31 +43,36 @@ export const JobDescription = ({ onError }) => {
                 }
             }
             catch {
-               
-            }            
+
+            }
         }
     }
 
-    
+
 
     if (loading) {
         return (
             <div>
-                <Loader/>
+                <Loader />
             </div>
         );
     }
     else {
         return (
             <div>
-                {descriptions.map(({ title, description }) => <div key={title} className="desc margin-b-2-l">
-                    <h2 className="surface surface-inset pad-eql">{title}</h2>
-                    <p className="surface surface-inset eql-margin-tb pad-eql">
-                        {description.split('\n').filter(line => line).map((line, index) => <React.Fragment key={index}><span className="desc-bullet"></span>&nbsp;&nbsp;{line}<br /><br /></React.Fragment>)}
-                    </p>
-                </div>)}
+                {descriptions.map(({ title, description }) =>
+                    <>
+                        <div key={title} className="desc margin-b-2-l">
+                            <h2 className="surface surface-inset pad-eql">{title}</h2>
+                            <p className="surface surface-inset eql-margin-tb pad-eql">
+                                {description.split('\n').filter(line => line).map((line, index) => <React.Fragment key={index}><span className="desc-bullet"></span>&nbsp;&nbsp;{line}<br /><br /></React.Fragment>)}
+                            </p>
+                        </div>
+                        <br />
+                    </>
+                )}
             </div>
         );
 
-    }  
+    }
 }
