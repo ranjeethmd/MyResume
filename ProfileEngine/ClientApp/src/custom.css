@@ -245,8 +245,8 @@ li {
 .desc-bullet {
     background-color: #0093E9;
     width: 0.6rem;
-    border: 2px solid #f1f1f1;
-    border-radius: 0.1rem;
+    border: 2px solid #f1f1f1f1;
+    border-radius: 1rem;
     height: 0.6rem;
     display: inline-block;
     box-shadow: inset 4px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(255,255,255,0.3), 2px 2px 4px rgba(0,0,0,0.2), -2px -2px 4px rgba(255,255,255,1);
