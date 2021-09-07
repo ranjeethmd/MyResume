@@ -359,7 +359,7 @@ footer  span {
     }
 
 
-button:active, .btn-clicked {
+a:active, button:active, .btn-clicked {
     background: #efeeee !important;
     box-shadow: inset 4px 4px 4px #cbcaca, inset -4px -4px 4px #ffffff !important;
     border: 1px rgba(255,255,255,1) solid !important;
