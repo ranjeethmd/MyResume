@@ -58,7 +58,7 @@ jobs:
         my-resume-connection: ${{ secrets.MY_RESUME_CONNECTION }}
   docker:
     runs-on: ubuntu-latest
-    # Wait for test cases to complete before building and pushing the container image
+   
     needs: [test, analyze]     
     steps:
     - uses: actions/checkout@v2
