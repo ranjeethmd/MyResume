@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { Jobs } from './components/Jobs';
 import { JobDescription } from './components/JobDesc';
@@ -14,16 +14,41 @@ import './custom.css'
 export const App = () => {
 
     var location = useLocation();
-
     const history = useHistory();
 
-    const defaultUri = parseUri(location.pathname, '/job-desc/:company');
+    const [defaultUri, setDefaultUrl] = useState('');
+  
+      
 
     const [error, setError] = useState({});
 
     const onError = (code, message) => {
         setError({ code, message });
     }
+
+
+    const onLinkChange = (location) => {
+        let company = parseUri(location.pathname, '/job-desc/:company');
+        setDefaultUrl(company);
+    }
+
+    useEffect(() => {
+        // on first load react to set url
+        
+
+        onLinkChange(location);
+    }, []);
+
+
+    useEffect(() => {
+        // back button handle
+
+        return history.listen((location) => {
+            onLinkChange(location);
+        })
+    }, [history])
+
+  
 
     const onCompanyChange = (company, unClicked) => {
         if (unClicked) {
@@ -39,6 +64,9 @@ export const App = () => {
         setError({});
         history.push(`/`);
     }
+
+
+
 
     return (
         <>

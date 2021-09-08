@@ -1,21 +1,23 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Loader } from './Loader';
 import { useFetch } from './UseFetch'
 
-export const Jobs = ({ onClick, defaulCompany, onError }) => {    
-
-    let { company } = useParams();
-
-    company = company || defaulCompany;
+export const Jobs = ({ onClick, defaulCompany, onError }) => {       
 
     const [loading, setLoading] = useState(false);
 
-    const [name, setName] = useState(company);
+    const [name, setName] = useState();
 
     const [opeartion, fetch] = useFetch();
 
-    const [exps, setExps] = useState([]);
+    const [exps, setExps] = useState([]);   
+
+    useEffect(() => {
+
+        setName(defaulCompany);
+
+    }, [defaulCompany]);
+
 
     useEffect(() => {
         getExperience();

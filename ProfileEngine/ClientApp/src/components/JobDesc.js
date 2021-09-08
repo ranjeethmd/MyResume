@@ -29,7 +29,6 @@ export const JobDescription = ({ onError }) => {
             try {
                 const response = await fetch(`Roles/${company}`);
 
-                console.log(response.status);
                 const data = await response.json();
 
                 if (response.status > 199 && response.status < 300) {
@@ -61,15 +60,15 @@ export const JobDescription = ({ onError }) => {
         return (
             <div>
                 {descriptions.map(({ title, description }) =>
-                    <>
-                        <div key={title} className="desc margin-b-2-l">
+                    <React.Fragment key={title}>
+                        <div  className="desc margin-b-2-l">
                             <h2 className="surface surface-inset pad-eql">{title}</h2>
                             <p className="surface surface-inset eql-margin-tb pad-eql">
                                 {description.split('\n').filter(line => line).map((line, index) => <React.Fragment key={index}><span className="desc-bullet"></span>&nbsp;&nbsp;{line}<br /><br /></React.Fragment>)}
                             </p>
                         </div>
                         <br />
-                    </>
+                    </React.Fragment>
                 )}
             </div>
         );
